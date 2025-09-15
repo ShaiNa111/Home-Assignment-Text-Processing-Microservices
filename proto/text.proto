@@ -13,4 +13,5 @@ message TextRequest {
 message TextResponse {
   repeated string tokens = 1;
   repeated string sentences = 2;
+  string sentiment = 3;
 }

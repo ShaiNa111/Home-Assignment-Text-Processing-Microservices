@@ -1,3 +1,4 @@
+import asyncio
 import grpc
 import logging
 import sys
@@ -27,12 +28,13 @@ stub = text_pb2_grpc.TextProcessorStub(channel)
 async def summarize(request: TextRequestModel):
     try:
         grpc_request = text_pb2.TextRequest(text=request.text)
-        response = stub.ProcessText(grpc_request)
+        response = await asyncio.to_thread(stub.ProcessText, grpc_request)
 
         # Convert protobuf response to dict
         result = {
             "tokens": list(response.tokens),
-            "sentences": list(response.sentences)
+            "sentences": list(response.sentences),
+            "sentiment": response.sentiment
         }
         return result
 

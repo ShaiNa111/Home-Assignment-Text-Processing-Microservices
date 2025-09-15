@@ -14,7 +14,8 @@ COPY ../proto ./proto
 COPY processing_service .
 
 # Download spaCy model
-RUN python -m spacy download en_core_web_sm
+RUN python -m spacy download en_core_web_sm && \
+    python -c "import nltk; nltk.download('punkt'); nltk.download('brown')"
 
 # Expose gRPC port
 EXPOSE 50051

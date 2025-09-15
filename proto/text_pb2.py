@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntext.proto\x12\x0etextprocessing\"\x1b\n\x0bTextRequest\x12\x0c\n\x04text\x18\x01 \x01(\t\"1\n\x0cTextResponse\x12\x0e\n\x06tokens\x18\x01 \x03(\t\x12\x11\n\tsentences\x18\x02 \x03(\t2Y\n\rTextProcessor\x12H\n\x0bProcessText\x12\x1b.textprocessing.TextRequest\x1a\x1c.textprocessing.TextResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntext.proto\x12\x0etextprocessing\"\x1b\n\x0bTextRequest\x12\x0c\n\x04text\x18\x01 \x01(\t\"D\n\x0cTextResponse\x12\x0e\n\x06tokens\x18\x01 \x03(\t\x12\x11\n\tsentences\x18\x02 \x03(\t\x12\x11\n\tsentiment\x18\x03 \x01(\t2Y\n\rTextProcessor\x12H\n\x0bProcessText\x12\x1b.textprocessing.TextRequest\x1a\x1c.textprocessing.TextResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,7 +34,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TEXTREQUEST']._serialized_start=30
   _globals['_TEXTREQUEST']._serialized_end=57
   _globals['_TEXTRESPONSE']._serialized_start=59
-  _globals['_TEXTRESPONSE']._serialized_end=108
-  _globals['_TEXTPROCESSOR']._serialized_start=110
-  _globals['_TEXTPROCESSOR']._serialized_end=199
+  _globals['_TEXTRESPONSE']._serialized_end=127
+  _globals['_TEXTPROCESSOR']._serialized_start=129
+  _globals['_TEXTPROCESSOR']._serialized_end=218
 # @@protoc_insertion_point(module_scope)
