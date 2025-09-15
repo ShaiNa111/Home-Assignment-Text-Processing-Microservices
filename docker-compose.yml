@@ -3,6 +3,7 @@ version: "3.9"
 services:
   processing_service:
     container_name: processing_service
+    image: ghcr.io/shainahman/home-assignment-text-processing-microservices/processing_service:latest
     build:
       context: .  # Build context is the root directory
       dockerfile: processing_service/Dockerfile
@@ -11,6 +12,7 @@ services:
 
   serving_service:
     container_name: serving_service
+    image: ghcr.io/shainahman/home-assignment-text-processing-microservices/serving_service:latest
     build:
       context: .  # Build context is the root directory
       dockerfile: serving_service/Dockerfile
