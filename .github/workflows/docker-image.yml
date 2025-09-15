@@ -28,13 +28,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Processing Service
         run: |
-          IMAGE=${{ env.REGISTRY }}/${{ github.actor }}/${{ env.PROCESSING_IMAGE_NAME }}:latest
+          IMAGE=${{ env.REGISTRY }}/$(echo ${{ github.actor }} | tr '[:upper:]' '[:lower:]')/${{ env.PROCESSING_IMAGE_NAME }}:latest
           echo "Building $IMAGE"
           docker build -t $IMAGE -f processing_service/Dockerfile .
           docker push $IMAGE
       - name: Build and Push Serving Service
         run: |
-          IMAGE=${{ env.REGISTRY }}/${{ github.actor }}/${{ env.SERVING_IMAGE_NAME }}:latest
+          IMAGE=${{ env.REGISTRY }}/$(echo ${{ github.actor }} | tr '[:upper:]' '[:lower:]')/${{ env.SERVING_IMAGE_NAME }}:latest
           echo "Building $IMAGE"
           docker build -t $IMAGE -f serving_service/Dockerfile .
           docker push $IMAGE
