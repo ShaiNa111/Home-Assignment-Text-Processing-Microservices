@@ -1,9 +1,16 @@
 name: Build and Push Docker Images
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    
+env:
+  REGISTRY: ghcr.io
+  PROCESSING_IMAGE_NAME: processing_service
+  SERVING_IMAGE_NAME: serving_service
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,21 +23,18 @@ jobs:
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Processing Service
         run: |
-          # Convert repository name to lowercase for Docker tag
-          IMAGE=ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')/processing_service:latest
-          
-          # Build from root directory with processing service dockerfile
+          IMAGE=${{ env.REGISTRY }}/${{ github.actor }}/${{ env.PROCESSING_IMAGE_NAME }}:latest
+          echo "Building $IMAGE"
           docker build -t $IMAGE -f processing_service/Dockerfile .
           docker push $IMAGE
       - name: Build and Push Serving Service
         run: |
-          IMAGE=ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')/serving_service:latest
-          
-          # Build from root directory with serving service dockerfile
+          IMAGE=${{ env.REGISTRY }}/${{ github.actor }}/${{ env.SERVING_IMAGE_NAME }}:latest
+          echo "Building $IMAGE"
           docker build -t $IMAGE -f serving_service/Dockerfile .
           docker push $IMAGE
