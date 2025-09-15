@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package textprocessing;
+
+service TextProcessor {
+  rpc ProcessText (TextRequest) returns (TextResponse);
+}
+
+message TextRequest {
+  string text = 1;
+}
+
+message TextResponse {
+  repeated string tokens = 1;
+  repeated string sentences = 2;
+}

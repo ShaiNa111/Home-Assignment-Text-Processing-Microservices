@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  processing_service:
+    container_name: processing_service
+    build:
+      context: .  # Build context is the root directory
+      dockerfile: processing_service/Dockerfile
+    ports:
+      - "50051:50051"
+
+  serving_service:
+    container_name: serving_service
+    build:
+      context: .  # Build context is the root directory
+      dockerfile: serving_service/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - processing_service
