@@ -27,10 +27,15 @@ jobs:
 
       - name: Build and Push Processing Service
         run: |
-          docker build -t ghcr.io/${{ github.repository | tr '[:upper:]' '[:lower:]') }}/processing_service:latest ./processing_service
-          docker push ghcr.io/${{ github.repository | tr '[:upper:]' '[:lower:]') }}/processing_service:latest
+          # Convert repository name to lowercase for Docker tag
+          IMAGE=ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')/processing_service:latest
+          echo "Building $IMAGE"
+          docker build -t $IMAGE ./processing_service
+          docker push $IMAGE
 
       - name: Build and Push Serving Service
         run: |
-          docker build -t ghcr.io/${{ github.repository | tr '[:upper:]' '[:lower:]') }}/serving_service:latest ./serving_service
-          docker push ghcr.io/${{ github.repository | tr '[:upper:]' '[:lower:]') }}/serving_service:latest
+          IMAGE=ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')/serving_service:latest
+          echo "Building $IMAGE"
+          docker build -t $IMAGE ./serving_service
+          docker push $IMAGE
