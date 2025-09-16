@@ -2,6 +2,7 @@
 
 This project provides text processing microservices (summarization, sentiment analysis, etc.) using FastAPI and gRPC,
 packaged with Docker for easy deployment.
+In addition, create CI using GitHub Actions
 
 ---
 
