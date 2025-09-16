@@ -10,8 +10,14 @@ message TextRequest {
   string text = 1;
 }
 
+message Entity {
+  string text = 1;
+  string label = 2;
+}
+
 message TextResponse {
   repeated string tokens = 1;
   repeated string sentences = 2;
   string sentiment = 3;
+  repeated Entity entities = 4;
 }

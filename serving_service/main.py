@@ -34,7 +34,10 @@ async def summarize(request: TextRequestModel):
         result = {
             "tokens": list(response.tokens),
             "sentences": list(response.sentences),
-            "sentiment": response.sentiment
+            "sentiment": response.sentiment,
+            "entities": [
+                {"text": ent.text, "label": ent.label} for ent in response.entities
+            ]
         }
         return result
 
