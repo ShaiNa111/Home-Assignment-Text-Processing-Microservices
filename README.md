@@ -39,7 +39,7 @@ Before running the project, make sure you have:
 
 **Open terminal and run:**
    ```
-        curl -X GET "http://0.0.0.0:8000/health" -H "Content-Type: application/json" -d '{}'
+   curl -X GET "http://0.0.0.0:8000/health" -H "Content-Type: application/json" -d '{}'
    ```
     Expected response: {"status": "ok"} if everting running well.
 
@@ -49,7 +49,7 @@ Before running the project, make sure you have:
 
 **Open terminal and run:**
    ```
-        curl -X POST "http://0.0.0.0:8000/summarize" -H "Content-Type: application/json" -d '{"text": "I love this service. It works great! see you in UK"}'
+   curl -X POST "http://0.0.0.0:8000/summarize" -H "Content-Type: application/json" -d '{"text": "I love this service. It works great! see you in UK"}'
    ```
     Expected response: 
 
